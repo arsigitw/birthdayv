@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Don't Let The Heart Fall ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="chapter4.css">
+</head>
+<body>
+  <div id="pageTransition" class="page-transition" aria-hidden="true"><span>♡</span><span>✦</span><span>✿</span></div>
+  <header class="chapter-top"><span class="chapter-mark">CHAPTER 04</span><div class="lang-switch"><button id="langEN">EN</button><button id="langID">ID</button></div></header>
+  <main>
+    <section id="introScreen" class="screen intro-screen active">
+      <div class="doodle d1">✦</div><div class="doodle d2">♡</div><div class="doodle d3">✿</div><div class="doodle d4">✧</div>
+      <div class="content">
+        <p class="eyebrow" data-en="CHAPTER 04" data-id="CHAPTER 04"></p>
+        <h1 data-en="DON'T LET<br><em>THE HEART FALL</em>" data-id="JANGAN BIARKAN<br><em>HATI INI JATUH</em>"></h1>
+        <div class="scribble"></div>
+        <p class="lead" data-en="Keep the heart safe until the end.<br><br>Move the little catcher and don't let it fall. ♡" data-id="Jaga hatinya sampai akhir.<br><br>Gerakkan penangkap kecilmu dan jangan sampai jatuh. ♡"></p>
+        <button id="startButton" class="main-btn" type="button"><span data-en="START GAME" data-id="MULAI GAME"></span><b>♡</b></button>
+        <p class="subhint" data-en="one round · about 20 seconds" data-id="satu ronde · sekitar 20 detik"></p>
+      </div>
+    </section>
+
+    <section id="countdownScreen" class="screen countdown-screen" hidden>
+      <div class="content"><p class="eyebrow" data-en="GET READY" data-id="SIAP-SIAP"></p><div id="countdown" class="countdown">3</div><p class="countdown-note" data-en="Keep your eyes on the heart..." data-id="Fokus ke hatinya..."></p></div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen" hidden>
+      <div class="hud"><div><span class="hud-label" data-en="SCORE" data-id="SKOR"></span><strong><span id="score">0</span> / 15</strong></div><div class="timer"><span class="hud-label" data-en="TIME" data-id="WAKTU"></span><strong><span id="time">20</span>s</strong></div></div>
+      <div id="playfield" class="playfield"><div id="catcher" class="catcher" aria-label="Heart catcher"></div><div id="floatingText" class="floating-text"></div></div>
+      <div class="control-hint"><span data-en="DESKTOP: ← → or drag" data-id="DESKTOP: ← → atau drag"></span><span class="dot">•</span><span data-en="PHONE: drag the catcher" data-id="HP: geser penangkapnya"></span></div>
+      <div id="dangerFlash" class="danger-flash"></div>
+    </section>
+
+    <section id="finishScreen" class="screen finish-screen" hidden>
+      <div class="finish-doodles" aria-hidden="true"><span>♡</span><span>✦</span><span>✧</span><span>✿</span><span>♡</span></div>
+      <div class="content finish-content">
+        <p class="eyebrow" data-en="MISSION COMPLETE" data-id="MISI SELESAI"></p>
+        <h2 data-en="YOU SAVED<br><em>THE HEART</em>" data-id="KAMU BERHASIL<br><em>MENJAGANYA</em>"></h2>
+        <p id="resultMessage" class="result-message" aria-live="polite"></p>
+        <div class="result-card"><div><span data-en="CAUGHT" data-id="TERTANGKAP"></span><strong id="finalScore">0 / 15</strong></div><div><span data-en="TIME LEFT" data-id="SISA WAKTU"></span><strong id="finalTime">—</strong></div></div>
+        <p class="reward" data-en="You kept it safe until the end.<br><br>Maybe that's what love is like sometimes—<br>just staying there and not letting go. ♡" data-id="Kamu berhasil menjaganya sampai akhir.<br><br>Mungkin begitulah cinta kadang-kadang—<br>tetap berada di sana dan nggak melepaskannya. ♡"></p>
+
+        <div id="rewardSection" class="reward-section" hidden>
+  <div class="reward-copy">
+    <p class="reward-title">You made it. Now choose one ♡</p>
+    <p class="reward-subtitle">One little reward is waiting for you.</p>
+  </div>
+
+  <div class="reward-options" aria-label="Choose your reward">
+    <button class="reward-option" type="button"
+      data-reward="ICE CREAM"
+      data-caption="YEAYY DAPAT ICE CREAM 🍦">
+      <div class="reward-image">
+        <img src="assets/reward-icecream.svg" alt="Ice Cream">
+      </div>
+      <span class="reward-caption">ICE CREAM</span>
+    </button>
+
+    <button class="reward-option" type="button"
+      data-reward="COFFEE"
+      data-caption="YEAYY DAPAT COFFEE ☕">
+      <div class="reward-image">
+        <img src="assets/reward-coffee.svg" alt="Coffee">
+      </div>
+      <span class="reward-caption">COFFEE</span>
+    </button>
+
+    <button class="reward-option" type="button"
+      data-reward="DESSERT"
+      data-caption="YEAYY DAPAT DESSERT 🍰">
+      <div class="reward-image">
+        <img src="assets/reward-dessert.svg" alt="Dessert">
+      </div>
+      <span class="reward-caption">DESSERT</span>
+    </button>
+  </div>
+
+  <div id="couponResult" class="coupon-result" hidden>
+    <div class="coupon-inner">
+      <span class="coupon-label">FREE COUPON ♡</span>
+      <h3 id="couponTitle">YEAYY DAPAT ICE CREAM 🍦</h3>
+      <div class="coupon-line"></div>
+      <p>This little coupon belongs to Silvi.</p>
+      <strong>Redeem with Ari ♡</strong>
+    </div>
+    <p class="screenshot-note">
+      Foto / Screenshot bagian ini,<br>
+      lalu kirimkan ke Ari ♡
+    </p>
+  </div>
+
+  <div class="reward-scroll-hint" aria-hidden="true">
+    <span>SCROLL TO CHOOSE</span>
+    <b>↓</b>
+  </div>
+</div>
+
+        <div class="finish-actions"><a id="retryButton" href="chapter4.html" class="main-btn secondary-btn"><span data-en="RETRY" data-id="ULANGI">RETRY</span><b>↻</b></a><button id="nextButton" class="main-btn" type="button"><span data-en="NEXT CHAPTER" data-id="CHAPTER BERIKUTNYA"></span><b>→</b></button></div>
+      </div>
+    </section>
+  </main>
+  <script src="chapter4.js"></script>
+</body>
+</html>

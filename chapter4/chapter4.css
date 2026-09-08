@@ -1,0 +1,239 @@
+*{box-sizing:border-box;margin:0;padding:0} :root{--cream:#f5eee4;--paper:#fffaf2;--ink:#29343a;--blue:#718a95;--blue-dark:#506873;--rose:#d39d98} html,body{width:100%;height:100%;overflow:hidden;touch-action:none}body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink)}button{font:inherit}.chapter-top{position:fixed;z-index:100;top:24px;left:30px;right:30px;display:flex;justify-content:space-between;align-items:center}.chapter-mark{color:#6e7473;font-size:.62rem;font-weight:600;letter-spacing:.22em}.lang-switch{display:flex;overflow:hidden;border:1px solid #29343a35;border-radius:999px;background:#ffffff88;backdrop-filter:blur(8px)}.lang-switch button{border:0;background:transparent;color:#6e7473;padding:7px 10px;cursor:pointer;font-size:.62rem;letter-spacing:.08em}.lang-switch button.active{background:var(--ink);color:#fff}.page-transition{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;pointer-events:none;opacity:0;transform:scaleY(0);transform-origin:center;background:radial-gradient(circle at 50% 45%,#fff 0 10%,#f5eee4 45%,#506873 100%);transition:transform .72s cubic-bezier(.77,0,.18,1),opacity .3s ease}.page-transition.running{opacity:1;transform:scaleY(1)}.page-transition span{position:absolute;color:var(--blue-dark);font-family:"Playfair Display",serif;opacity:0;font-size:2rem;transition:opacity .25s ease,transform .75s ease}.page-transition span:nth-child(1){left:20%;top:28%}.page-transition span:nth-child(2){right:20%;top:55%}.page-transition span:nth-child(3){left:62%;bottom:23%}.page-transition.running span{opacity:.7}.page-transition.running span:nth-child(1){transform:translate(12px,-8px) rotate(18deg)}.page-transition.running span:nth-child(2){transform:translate(-10px,12px) rotate(-18deg)}.page-transition.running span:nth-child(3){transform:translate(10px,-12px) rotate(22deg)}.screen{position:absolute;inset:0;width:100%;height:100svh;display:grid;place-items:center;overflow:hidden}.screen[hidden]{display:none}.screen.active{animation:screenIn .82s cubic-bezier(.77,0,.18,1) both}.intro-screen{background:radial-gradient(circle at 18% 18%,#fff,transparent 30%),radial-gradient(circle at 82% 80%,#829baa25,transparent 30%),var(--cream)}.countdown-screen{background:var(--blue-dark);color:#fff}.game-screen{background:#f3ece2}.finish-screen{background:var(--ink);color:var(--paper)}.content{width:min(90%,680px);position:relative;z-index:5;text-align:center}.eyebrow{color:#7d817f;font-size:.61rem;font-weight:600;letter-spacing:.24em}.countdown-screen .eyebrow,.finish-screen .eyebrow{color:#ffffffa8}.content h1{margin-top:24px;font-family:"Playfair Display",serif;font-size:clamp(3.8rem,12vw,6.7rem);font-weight:600;line-height:.92;letter-spacing:-.045em}.content h1 em,.content h2 em{color:var(--blue-dark);font-style:italic;font-weight:500}.scribble{width:180px;height:14px;margin:22px auto;border-bottom:2px solid #718a9560;border-radius:50%;transform:rotate(-2deg)}.lead{color:#646b6d;font-family:"Playfair Display",serif;font-size:1rem;font-style:italic;line-height:1.8}.main-btn{display:inline-block;margin-top:34px;padding:14px 22px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;text-decoration:none;font-size:.64rem;font-weight:600;letter-spacing:.16em;transition:transform .25s ease,background .25s ease}.main-btn:hover{transform:translateY(-3px);background:var(--blue-dark)}.main-btn b{margin-left:9px;font-size:1rem;font-weight:400}.subhint{margin-top:14px;color:#929694;font-size:.57rem;letter-spacing:.08em;text-transform:uppercase}.countdown{margin-top:24px;font-family:"Playfair Display",serif;font-size:clamp(6rem,22vw,10rem);font-weight:600;line-height:.85}.countdown-note{margin-top:20px;color:#ffffffa8;font-family:"Playfair Display",serif;font-style:italic}.hud{position:absolute;z-index:20;top:82px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.hud>div{display:flex;flex-direction:column;gap:3px}.hud-label{color:#7d817f;font-size:.58rem;font-weight:600;letter-spacing:.17em}.hud strong{color:var(--ink);font-family:"Playfair Display",serif;font-size:1.35rem}.timer{text-align:right;align-items:flex-end}.playfield{position:absolute;inset:0;overflow:hidden;cursor:none}.catcher{position:absolute;z-index:20;bottom:45px;left:50%;width:112px;height:36px;border:2px solid var(--blue-dark);border-top:0;border-bottom-left-radius:60px;border-bottom-right-radius:60px;background:#ffffff88;backdrop-filter:blur(4px);transform:translateX(-50%);transition:box-shadow .15s ease;pointer-events:none}.catcher::after{content:"";position:absolute;left:8px;right:8px;bottom:1px;height:6px;border-radius:20px;background:#718a9525}.catcher.active{box-shadow:0 0 0 5px #718a951c}.falling-heart{position:absolute;z-index:8;display:grid;place-items:center;width:58px;height:58px;color:var(--blue-dark);font-family:"Playfair Display",serif;font-size:3rem;transform:translate(-50%,-50%);filter:drop-shadow(0 8px 12px #50687325);user-select:none;pointer-events:none;will-change:transform,left,top}.floating-text{position:absolute;z-index:12;color:var(--blue-dark);font-family:"Playfair Display",serif;font-size:1rem;font-style:italic;opacity:0;pointer-events:none}.floating-text.show{animation:floatText .65s ease forwards}.control-hint{position:absolute;z-index:25;bottom:20px;left:50%;transform:translateX(-50%);color:#858c8c;font-size:.55rem;letter-spacing:.07em;white-space:nowrap}.control-hint .dot{margin:0 6px}.danger-flash{position:absolute;z-index:15;inset:0;pointer-events:none;background:#d39d9820;opacity:0}.danger-flash.show{animation:dangerFlash .35s ease}.finish-doodles span{position:absolute;color:#ffffff4d;font-family:"Playfair Display",serif;font-size:2rem;animation:float .5s ease-in-out infinite alternate}.finish-doodles span:nth-child(1){left:12%;top:18%;font-size:3.4rem}.finish-doodles span:nth-child(2){right:17%;top:22%;animation-delay:.2s}.finish-doodles span:nth-child(3){left:20%;bottom:22%;animation-delay:.4s}.finish-doodles span:nth-child(4){right:14%;bottom:18%;font-size:2.5rem;animation-delay:.6s}.finish-doodles span:nth-child(5){left:28%;top:14%;animation-delay:.8s}.content h2{margin-top:24px;font-family:"Playfair Display",serif;font-size:clamp(4rem,13vw,7rem);font-weight:600;line-height:.88;letter-spacing:-.045em}.content h2 em{color:#fff}.result-message{min-height:1.5em;margin:16px 0 10px;text-align:center;font-family:"Playfair Display",serif;font-size:1.25rem;letter-spacing:.04em}.result-message.success{font-weight:700}.result-card{width:min(92%,380px);margin:30px auto 0;display:grid;grid-template-columns:1fr 1fr;border:1px solid #ffffff1e;background:#ffffff0b}.result-card div{padding:17px 18px}.result-card div+div{border-left:1px solid #ffffff18}.result-card span{display:block;color:#ffffffa0;font-size:.57rem;font-weight:600;letter-spacing:.16em}.result-card strong{display:block;margin-top:4px;color:#fff;font-family:"Playfair Display",serif;font-size:1.7rem}.reward{margin-top:27px;color:#ffffffc0;font-family:"Playfair Display",serif;font-size:1rem;line-height:1.75}.reward-section{margin:24px auto 0;width:min(94%,760px);animation:rewardEnter .7s cubic-bezier(.22,1,.36,1) both}.reward-title{font-family:"Playfair Display",serif;font-size:1.15rem}.reward-subtitle{margin-top:5px;font-size:.62rem;opacity:.55}.reward-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.reward-option{appearance:none;border:1px solid #ffffff26;background:#ffffff08;color:inherit;padding:0 0 10px;cursor:pointer;transition:transform .3s ease,border-color .3s ease,background .3s ease}.reward-option:hover{transform:translateY(-5px);border-color:#ffffff66;background:#ffffff12}.reward-option.selected{border-color:#fff;background:#ffffff18}.reward-image{width:100%;aspect-ratio:4/3;overflow:hidden}.reward-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}.reward-option:hover img{transform:scale(1.05)}.reward-caption{display:block;margin-top:9px;font-size:.56rem;font-weight:600;letter-spacing:.13em}.coupon-result{margin:20px auto 0;animation:couponEnter .75s cubic-bezier(.22,1,.36,1) both}.coupon-inner{position:relative;width:min(100%,460px);margin:auto;padding:24px;border:1px dashed #ffffff80;background:#ffffff0a;box-shadow:0 16px 40px #0003}.coupon-inner:before,.coupon-inner:after{content:"";position:absolute;width:16px;height:16px;top:50%;margin-top:-8px;border-radius:50%;background:var(--ink)}.coupon-inner:before{left:-9px}.coupon-inner:after{right:-9px}.coupon-label{display:block;font-size:.55rem;font-weight:600;letter-spacing:.2em;opacity:.6;margin-bottom:10px}.coupon-inner h3{font-family:"Playfair Display",serif;font-size:clamp(1.45rem,4vw,2rem);line-height:1.15}.coupon-line{width:70px;height:1px;margin:15px auto;background:#ffffff55}.coupon-inner p{margin-bottom:6px;font-family:"Playfair Display",serif;font-size:.88rem;opacity:.72}.coupon-inner strong{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}.screenshot-note{margin-top:11px;font-size:.55rem;line-height:1.65;letter-spacing:.04em;opacity:.5}.finish-actions{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:25px;flex-wrap:wrap}.finish-actions .main-btn{margin-top:0}.secondary-btn{background:transparent;border-color:#ffffff55}.secondary-btn:hover{background:#ffffff12}.doodle{position:absolute;z-index:2;pointer-events:none;font-family:"Playfair Display",serif;animation:float 4s ease-in-out infinite alternate}.d1{left:13%;top:18%;color:var(--blue-dark);font-size:2rem}.d2{right:14%;top:25%;color:var(--blue);font-size:4rem;animation-delay:.5s}.d3{right:16%;bottom:17%;color:var(--blue);font-size:2.6rem;animation-delay:1s}.d4{left:18%;bottom:22%;color:var(--blue-dark);font-size:1.6rem;animation-delay:1.3s}@keyframes screenIn{from{opacity:0;transform:translate3d(3%,0,0) scale(.985)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}@keyframes float{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-8px) rotate(4deg)}}@keyframes floatText{0%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-28px) scale(1.12)}}@keyframes dangerFlash{0%{opacity:0}25%{opacity:1}100%{opacity:0}}@keyframes rewardEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes couponEnter{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}@media(max-width:650px){.chapter-top{top:18px;left:18px;right:18px}.chapter-mark{font-size:.55rem}.content{width:min(92%,620px)}.content h1{font-size:clamp(3.1rem,15vw,5.5rem)}.content h2{font-size:clamp(3.4rem,17vw,5.6rem)}.lead{font-size:.9rem}.hud{top:72px;left:18px;right:18px}.hud strong{font-size:1.1rem}.catcher{width:105px;height:34px;bottom:38px}.falling-heart{width:58px;height:58px;font-size:3rem}.control-hint{bottom:13px;font-size:.45rem}.d1{left:4%}.d2{right:3%}.d3{right:4%}.d4{left:6%}.finish-content{width:min(94%,560px);padding:18px 0}.finish-screen{overflow-y:auto;overflow-x:hidden;place-items:start center}.finish-content{margin:auto;padding-top:76px;padding-bottom:32px}.content h2{margin-top:18px}.result-card{margin-top:18px}.reward{margin-top:18px;font-size:.88rem;line-height:1.55}.reward-section{margin-top:20px}.reward-options{gap:7px;margin-top:12px}.reward-caption{font-size:.48rem;letter-spacing:.08em}.reward-option{padding-bottom:7px}.coupon-inner{padding:20px 16px}.finish-actions{margin-top:20px}.finish-actions .main-btn{padding:12px 17px;font-size:.58rem}}@media(max-width:380px){.finish-content{padding-top:70px}.content h2{font-size:clamp(3rem,16vw,4.8rem)}.result-card strong{font-size:1.4rem}.reward{font-size:.82rem}.reward-title{font-size:1rem}.reward-subtitle{font-size:.56rem}.finish-actions .main-btn{padding:11px 14px}.coupon-inner h3{font-size:1.35rem}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* =========================================================
+   CHOICE LAYOUT FIX
+   Result screen: message left, choices right.
+   The finish screen can scroll when the viewport is short.
+========================================================= */
+
+.finish-screen {
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+  padding-top: clamp(34px, 7vh, 70px);
+  padding-bottom: 70px;
+}
+
+.finish-screen .content {
+  width: min(1180px, 94vw);
+  margin: 0 auto;
+}
+
+.finish-screen .content > .eyebrow,
+.finish-screen .content > h2,
+.finish-screen .content > .result-message,
+.finish-screen .content > .result-card,
+.finish-screen .content > .reward,
+.finish-screen .content > .finish-actions {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reward area becomes a horizontal composition */
+.reward-section {
+  width: min(1080px, 94vw);
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns: minmax(250px, .72fr) minmax(430px, 1.28fr);
+  grid-template-areas:
+    "copy options"
+    "coupon coupon"
+    "hint hint";
+  gap: 18px 36px;
+  align-items: center;
+  text-align: left;
+}
+
+.reward-copy {
+  grid-area: copy;
+  padding: 12px 0;
+  align-self: center;
+}
+
+.reward-title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.reward-subtitle {
+  margin: 8px 0 0;
+  font-size: .68rem;
+  letter-spacing: .04em;
+  opacity: .62;
+  line-height: 1.6;
+}
+
+.reward-options {
+  grid-area: options;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.reward-option {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.035);
+  color: inherit;
+  font: inherit;
+  padding: 0 0 10px;
+  cursor: pointer;
+  min-width: 0;
+  transition: transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+.reward-option:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,.48);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+}
+
+.reward-option.selected {
+  border-color: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.12);
+  transform: translateY(-4px);
+}
+
+.reward-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 9px;
+}
+
+.reward-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.reward-option:hover img,
+.reward-option.selected img {
+  transform: scale(1.05);
+}
+
+.reward-caption {
+  display: block;
+  padding: 0 5px;
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coupon-result {
+  grid-area: coupon;
+  width: min(560px, 100%);
+  margin: 4px auto 0;
+  text-align: center;
+}
+
+.reward-scroll-hint {
+  grid-area: hint;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 3px;
+  font-size: .52rem;
+  letter-spacing: .16em;
+  opacity: .48;
+  animation: choiceHintFloat 1.8s ease-in-out infinite;
+}
+
+.reward-scroll-hint b {
+  font-size: .9rem;
+  font-weight: 400;
+}
+
+@keyframes choiceHintFloat {
+  0%, 100% { transform: translateY(0); opacity: .4; }
+  50% { transform: translateY(4px); opacity: .72; }
+}
+
+/* Short laptop screens: preserve composition and allow natural scrolling */
+@media (max-height: 760px) and (min-width: 651px) {
+  .finish-screen {
+    padding-top: 28px;
+    padding-bottom: 90px;
+  }
+
+  .finish-screen .content > h2 {
+    font-size: clamp(3rem, 6.8vw, 5rem);
+    margin-top: 12px;
+  }
+
+  .finish-screen .result-card {
+    margin-top: 18px;
+  }
+
+  .reward-section {
+    margin-top: 20px;
+  }
+}
+
+/* Phone: stack only when necessary */
+@media (max-width: 700px) {
+  .finish-screen {
+    align-items: flex-start;
+    padding-top: 55px;
+    padding-bottom: 90px;
+  }
+
+  .finish-screen .content {
+    width: min(94vw, 560px);
+  }
+
+  .reward-section {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "options"
+      "coupon"
+      "hint";
+    gap: 16px;
+    text-align: center;
+  }
+
+  .reward-copy {
+    padding: 0;
+  }
+
+  .reward-options {
+    gap: 8px;
+  }
+
+  .reward-caption {
+    font-size: .48rem;
+  }
+}
+
+/* Very short phones: compact everything but keep scroll */
+@media (max-width: 700px) and (max-height: 720px) {
+  .finish-screen {
+    padding-top: 44px;
+  }
+
+  .finish-screen .content > h2 {
+    font-size: clamp(2.7rem, 13vw, 4rem);
+  }
+
+  .finish-screen .result-card {
+    margin-top: 14px;
+  }
+
+  .reward-section {
+    margin-top: 18px;
+    gap: 12px;
+  }
+}

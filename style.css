@@ -1,0 +1,340 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #f6f0e7;
+  --paper: #fffaf3;
+  --ink: #27333a;
+  --muted: #7d817f;
+  --blue: #829baa;
+  --blue-dark: #506873;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.opening {
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 28%),
+    radial-gradient(circle at 80% 75%, rgba(130,155,170,.16), transparent 30%),
+    var(--cream);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+}
+
+.opening-card {
+  position: relative;
+  z-index: 2;
+  width: min(88%, 560px);
+  min-height: 600px;
+  padding: 70px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(255,250,243,.68);
+  border: 1px solid rgba(255,255,255,.8);
+  box-shadow: 0 30px 80px rgba(56, 67, 72, .10);
+  backdrop-filter: blur(10px);
+}
+
+.eyebrow {
+  font-size: .68rem;
+  letter-spacing: .28em;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.opening-card h1 {
+  margin-top: 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(4.5rem, 15vw, 8rem);
+  line-height: .72;
+  font-weight: 500;
+  letter-spacing: -.05em;
+}
+
+.opening-card h1 span {
+  font-family: "Parisienne", cursive;
+  font-size: .72em;
+  color: var(--blue-dark);
+}
+
+.intro {
+  margin-top: 38px;
+  color: var(--muted);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.open-button,
+.continue-button {
+  cursor: pointer;
+}
+
+.open-button {
+  margin-top: 34px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: white;
+  padding: 15px 25px;
+  min-width: 180px;
+  letter-spacing: .16em;
+  font-size: .72rem;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.open-button:hover {
+  transform: translateY(-3px);
+  background: var(--blue-dark);
+}
+
+.open-button span + span {
+  margin-left: 8px;
+  font-size: 1rem;
+}
+
+.hint {
+  margin-top: 14px;
+  font-size: .63rem;
+  color: #a0a19e;
+}
+
+.corner-note {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  font-family: "Parisienne", cursive;
+  font-size: 1.25rem;
+  color: var(--blue-dark);
+  z-index: 3;
+}
+
+.floating-heart {
+  position: absolute;
+  color: var(--blue-dark);
+  opacity: .28;
+  animation: float 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.heart-1 { top: 15%; left: 14%; font-size: 2rem; }
+.heart-2 { right: 14%; top: 25%; font-size: 1.5rem; animation-delay: 1s; }
+.heart-3 { left: 18%; bottom: 18%; font-size: 1rem; animation-delay: 2s; }
+
+.birthday-screen {
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(255,255,255,.12), transparent 30%),
+    var(--blue-dark);
+  color: var(--paper);
+}
+
+.birthday-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 25px;
+}
+
+.birthday-content .eyebrow {
+  color: rgba(255,255,255,.62);
+}
+
+.birthday-content h1 {
+  margin-top: 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  line-height: .88;
+}
+
+.birthday-content h2 {
+  margin-top: 5px;
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-size: clamp(4.5rem, 14vw, 7.5rem);
+  line-height: 1;
+  color: #e6eef1;
+}
+
+.birthday-content h2 span {
+  font-family: "DM Sans", sans-serif;
+  font-size: .3em;
+  vertical-align: middle;
+}
+
+.divider {
+  margin: 34px auto 25px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 180px;
+  color: rgba(255,255,255,.6);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: rgba(255,255,255,.28);
+}
+
+.message {
+  color: rgba(255,255,255,.78);
+  line-height: 1.9;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+}
+
+.signature {
+  margin-top: 25px;
+  font-family: "Parisienne", cursive;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,.82);
+}
+
+.continue-button {
+  margin-top: 48px;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: .68rem;
+  letter-spacing: .18em;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  padding-bottom: 8px;
+}
+
+.continue-button span + span {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+#hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.confetti-heart {
+  position: absolute;
+  top: -30px;
+  color: rgba(255,255,255,.65);
+  animation: fall linear forwards;
+}
+
+.page-enter {
+  animation: pageEnter .9s ease both;
+}
+
+.page-leave {
+  animation: pageLeave .55s ease both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pageLeave {
+  to { opacity: 0; transform: scale(.985); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-16px) rotate(5deg); }
+}
+
+@keyframes fall {
+  from { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; }
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .opening-card {
+    min-height: 570px;
+    padding: 55px 25px;
+  }
+
+  .corner-note {
+    right: 20px;
+    bottom: 18px;
+  }
+
+  .heart-1 { left: 7%; }
+  .heart-2 { right: 8%; }
+}
+
+/* =========================================================
+   RESPONSIVE PATCH — GLOBAL PAGES
+   Keeps the original animations/effects intact.
+   ========================================================= */
+html, body { width:100%; min-height:100%; }
+body { overflow-x:hidden; }
+.opening, .birthday-screen { min-height:100dvh; width:100%; }
+.opening-card { width:min(88vw,560px); min-height:min(600px,82dvh); padding:clamp(36px,7vh,70px) clamp(20px,5vw,35px); }
+.opening-card h1 { font-size:clamp(3.5rem,12vw,8rem); }
+.intro { font-size:clamp(1.05rem,2.5vw,1.4rem); }
+.birthday-content { width:min(92vw,720px); padding:clamp(32px,7vh,60px) clamp(16px,4vw,25px); }
+.birthday-content h1 { font-size:clamp(2.8rem,8vw,6rem); }
+.birthday-content h2 { font-size:clamp(3.8rem,11vw,7.5rem); }
+.message { font-size:clamp(1rem,2.5vw,1.25rem); }
+.divider { width:min(180px,48vw); }
+.continue-button { margin-top:clamp(28px,5vh,48px); }
+@media (max-width:600px) {
+  .opening-card { width:92vw; min-height:min(570px,82dvh); }
+  .corner-note { right:16px; bottom:14px; font-size:1rem; }
+  .birthday-content { padding-top:72px; padding-bottom:48px; }
+}
+@media (max-height:700px) and (min-width:601px) {
+  .opening-card { min-height:86dvh; padding-block:28px; }
+  .birthday-content { padding-block:28px; }
+  .birthday-content h1 { margin-top:18px; }
+  .divider { margin-block:20px; }
+  .continue-button { margin-top:26px; }
+}
+@media (max-height:620px) {
+  .opening-card { min-height:90dvh; }
+  .opening-card h1 { font-size:clamp(3rem,12vh,5.5rem); }
+  .intro { margin-top:20px; }
+  .open-button { margin-top:22px; }
+  .birthday-content { padding-block:20px; }
+  .birthday-content h1 { margin-top:12px; }
+  .birthday-content h2 { font-size:clamp(3.2rem,15vh,6rem); }
+  .message { line-height:1.55; }
+  .signature { margin-top:14px; }
+  .continue-button { margin-top:20px; }
+}
