@@ -34,7 +34,7 @@ const rewardOptions = [
 let language = localStorage.getItem("birthdayLanguage") || "en";
 
 let score = 0;
-let timeLeft = 20;
+let timeLeft = 25;
 
 let running = false;
 let finished = false;
@@ -49,7 +49,7 @@ let lastTime = 0;
 
 const HEART_COUNT = 5;
 const TARGET = 15;
-const TOTAL_TIME = 20;
+const TOTAL_TIME = 25;
 
 
 /* =========================================================
